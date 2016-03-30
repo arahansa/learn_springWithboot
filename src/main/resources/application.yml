@@ -1,0 +1,3 @@
+server.port: 9000
+testConfig.slack.enabled: true
+testConfig.db.enabled: false
