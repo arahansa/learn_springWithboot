@@ -1,4 +1,4 @@
-package com.example.learn.web.jspScope;
+package com.example.learn.web.jstl;
 
 import javax.servlet.ServletContext;
 
@@ -19,11 +19,11 @@ public class JspScopeTestController {
 	public String test(String message){
 		log.info("message : {} ", message);
 		servletContext.setAttribute("message", message);
-		return "jspScope/index";
+		return "jstl/index";
 	}
 	
 	@RequestMapping("/test/jspScope2")
 	public String test2(){
-		return "jspScope/index";
+		return "jstl/index";
 	}
 }
