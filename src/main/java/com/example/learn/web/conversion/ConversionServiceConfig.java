@@ -3,6 +3,7 @@ package com.example.learn.web.conversion;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ConversionServiceFactoryBean;
@@ -14,8 +15,11 @@ import com.example.learn.web.conversion.converter.StringToLevel;
 @Configuration
 public class ConversionServiceConfig {
 	
+
+	
+	
 	@Bean
-	public ConversionServiceFactoryBean conversionServiceFactoryBean(){
+	public ConversionServiceFactoryBean conversionService(){
 		ConversionServiceFactoryBean csfb = new ConversionServiceFactoryBean();
 		Set<Converter> converts = new HashSet<>();
 		converts.add(new LevelToStringConverter());
