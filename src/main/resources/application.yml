@@ -4,3 +4,4 @@ testConfig.db.enabled: false
 
 spring.view.prefix: /WEB-INF/views/
 spring.view.suffix: .jsp
+logging.level.org.springframework.web: DEBUG

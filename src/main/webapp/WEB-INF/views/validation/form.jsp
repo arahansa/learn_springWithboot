@@ -9,11 +9,15 @@
 <body>
 
 <form:form method="post" modelAttribute="validationTest" action="/test/validation">
-	<form:input path="age" /> <form:errors path="age" cssClass="error"></form:errors><br>
-	<form:input path="msg" /><form:errors path="msg" cssClass="error"></form:errors> <br>
-	<form:input path="test" /> <form:errors path="test" cssClass="error"></form:errors><br>
+	age : <form:input path="age" /> <form:errors path="age" cssClass="error"></form:errors><br>
+	msg : <form:input path="msg" /><form:errors path="msg" cssClass="error"></form:errors> <br>
+	test : <form:input path="test" /> <form:errors path="test" cssClass="error"></form:errors><br>
 	<input type="submit" value="전송" />
 </form:form>
+
+<br>
+
+<spring:message code="Size"/>
 
 </body>
 </html>

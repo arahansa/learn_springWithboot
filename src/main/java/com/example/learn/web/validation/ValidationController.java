@@ -18,15 +18,15 @@ public class ValidationController {
 	
 	@RequestMapping(value = "/test/validation", method= RequestMethod.GET)
 	public String validationTest(@ModelAttribute ValidationTest validationTest){
-		return "/validation/form";
+		return "validation/form";
 	}
 	
 	@RequestMapping(value="/test/validation", method = RequestMethod.POST)
 	public String validation(@Valid @ModelAttribute ValidationTest validationTest, BindingResult result){
 		if(result.hasErrors()){
-			return "/validation/form";	
+			return "validation/form";	
 		}
-		return "/validation/index";
+		return "validation/index";
 	}
 	
 	@Data
