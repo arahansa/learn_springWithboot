@@ -1,11 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title> Happy WOrld </title>
 </head>
 <body>
-<form:form modelAttribute="article" method="post" action="/test/sessionStatus/update">
+<form:form modelAttribute="updateA" method="post" action="/test/sessionStatus/updateFail">
 id : <form:input path="id"/>
 age : <form:input path="age"/>
 msg : <form:input path="msg"/>

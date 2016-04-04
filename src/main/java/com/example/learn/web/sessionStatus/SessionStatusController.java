@@ -1,5 +1,6 @@
 package com.example.learn.web.sessionStatus;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,11 +25,7 @@ public class SessionStatusController {
 	
 	private Map<Integer, Article> testMap = new HashMap<>();
 
-	@Data
-	static class Article{
-		int id, age; 
-		String msg, hiddenMsg;
-	}	
+	
 	
 	
 	@RequestMapping(value="/test/sessionStatus", method=RequestMethod.GET)
@@ -39,13 +36,14 @@ public class SessionStatusController {
 	@RequestMapping(value="/test/sessionStatus", method=RequestMethod.POST)
 	public String sessionStatusPost(Article article){
 		testMap.put(article.getId(), article);
-		return "redirect:list";
+		return "redirect:sessionStatus/list";
 	}
 	
 	@RequestMapping(value="/test/sessionStatus/list" , method=RequestMethod.GET)
 	public String list(Model model){
 		List<Article> collect = testMap.entrySet().stream()
 				.map(Map.Entry::getValue).collect(Collectors.toList());
+		log.info("collection : {} ", collect);
 		model.addAttribute("list", collect);
 		return "sessionStatus/list";
 	}
@@ -57,6 +55,16 @@ public class SessionStatusController {
 		return "sessionStatus/updateForm";
 	}
 	
+	
+	
+	@RequestMapping(value="/test/sessionStatus/update", method=RequestMethod.POST)
+	public String updatePost(@ModelAttribute("updateArticle") Article article, SessionStatus sessionStatus){
+		log.info("article : {}" , article);
+		testMap.put(article.getId(), article);
+		sessionStatus.setComplete();
+		return "redirect:list";
+	}
+	
 	@RequestMapping(value="/test/sessionStatus/updateFail/{id}", method=RequestMethod.GET)
 	public String updateForm2(@PathVariable Integer id, Model model){
 		Article article = testMap.get(id);
@@ -64,22 +72,30 @@ public class SessionStatusController {
 		return "sessionStatus/updateFormFail";
 	} 
 	
-	
-	@RequestMapping(value="/test/sessionStatus/update", method=RequestMethod.POST)
-	public String updatePost(Article article, SessionStatus sessionStatus){
+	@RequestMapping(value="/test/sessionStatus/updateFail", method=RequestMethod.POST)
+	public String updatePostFail(Article article){
 		log.info("article : {}" , article);
 		testMap.put(article.getId(), article);
-		sessionStatus.setComplete();
+		return "redirect:list";
+	}
+	
+	@RequestMapping("/test/sessionStatus/test")
+	public String testtest(Model model){
+		Article article = new Article();
+		article.setAge(1);
+		article.setId(1);
+		article.setMsg("hi");
+		article.setHiddenMsg("hello");
+		Article article2 = new Article();
+		article2.setAge(1);
+		article2.setId(1);
+		article2.setMsg("hi");
+		article2.setHiddenMsg("hello");
+		model.addAttribute("list", Arrays.asList(article, article2));
 		return "sessionStatus/list";
 	}
 	
-	@RequestMapping(value="/test/sessionStatus/update", method=RequestMethod.POST)
-	public String updatePostFail(Article article, SessionStatus sessionStatus){
-		log.info("article Fail : {}" , article);
-		testMap.put(article.getId(), article);
-		sessionStatus.setComplete();
-		return "sessionStatus/list";
-	}
+	
 	
 	
 	

@@ -7,7 +7,7 @@
 <title> Happy WOrld </title>
 </head>
 <body>
-<form:form modelAttribute="article" method="post" action="/test/sessionStatus/update">
+<form:form modelAttribute="updateArticle" method="post" action="/test/sessionStatus/update">
 id : <form:input path="id"/>
 age : <form:input path="age"/>
 msg : <form:input path="msg"/>
