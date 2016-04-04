@@ -35,7 +35,6 @@ public class ValidationController {
 		int age;
 		@Size(max=10)
 		String msg;
-		
 		@NotBlank
 		String test;
 	}
